@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Tik Tok Toe</string>
+    <string name="player_score">Player 1: 0 | Player 2: 0</string>
+    <string name="score">Score</string>
+</resources>
