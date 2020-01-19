@@ -23,7 +23,7 @@ class NoobMath :AppCompatActivity(){
         }
     }
 
-   private var randomPicker = Random.nextInt(0, 1)
+   private var randomPicker = Random.nextInt(0, 2)
 
     private fun askQuestion(): String {
 
@@ -31,9 +31,10 @@ class NoobMath :AppCompatActivity(){
 
         when (randomPicker){
 
-            0 -> {
-                question = "What is the symbol of addition?"
-            }
+            0 -> question = "What is the symbol of addition?"
+            1 -> question = "If you had 4 eggs and you boiled 2, how many do you have now?"
+
+
         }
         return question
     }
@@ -48,6 +49,7 @@ class NoobMath :AppCompatActivity(){
 
         when(answer){
             "+" -> value = 0
+            "4" -> value = 1
         }
 
 
