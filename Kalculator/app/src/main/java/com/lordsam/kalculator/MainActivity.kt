@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private var operationValue = "+"
     private var oldNumber = ""
     private var isOP = true
+    private var isEqEnsbled = false
 
     fun buClick(view :View){
 
@@ -95,40 +96,46 @@ class MainActivity : AppCompatActivity() {
         oldNumber = textView.text.toString()
         Log.i("old", "old $oldNumber")
         isOP = true
+        isEqEnsbled = true
     }
 
     fun buEQClick(view :View){
-        val newNumber = textView.text.toString()
-        Log.i("old", "new $newNumber")
-        var finalValue :Double? = null
 
-        when (operationValue){
-            "+" -> {
-                finalValue = oldNumber.toDouble() + newNumber.toDouble()
+        if (isEqEnsbled) {
+            val newNumber = textView.text.toString()
+            Log.i("old", "new $newNumber")
+            var finalValue: Double? = null
+
+            when (operationValue) {
+                "+" -> {
+                    finalValue = oldNumber.toDouble() + newNumber.toDouble()
+                }
+                "-" -> {
+                    finalValue = oldNumber.toDouble() - newNumber.toDouble()
+                }
+                "*" -> {
+                    finalValue = oldNumber.toDouble() * newNumber.toDouble()
+                }
+                "/" -> {
+                    finalValue = oldNumber.toDouble() / newNumber.toDouble()
+                }
             }
-            "-" -> {
-                finalValue = oldNumber.toDouble() - newNumber.toDouble()
-            }
-            "*" -> {
-                finalValue = oldNumber.toDouble() * newNumber.toDouble()
-            }
-            "/" -> {
-                finalValue = oldNumber.toDouble() / newNumber.toDouble()
-            }
+            textView.text = finalValue.toString()
+            isOP = true
+            isEqEnsbled = false
         }
-        textView.text = finalValue.toString()
-        isOP = true
 
     }
 
     fun buClear(view :View){
         textView.text = ""
+        textView2.text = ""
         isOP = true
 
     }
 
     fun buPercent(view :View){
-        var percent = textView.text.toString().toDouble() / 100
+        val percent = textView.text.toString().toDouble() / 100
         textView.text = percent.toString()
         isOP = true
 

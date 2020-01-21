@@ -1,11 +1,10 @@
-package com.lordsam.samulator
+package com.lordsam.kalkulator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import com.lordsam.kalculator.EvaluateString
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,8 +26,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-    fun clickEvent(view :View){
+    fun clickEvent(view : View){
 
         val buSelect = view as Button
         var buClick:String=editText.text.toString()
@@ -85,16 +83,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         editText.setText(buClick)
-}
+    }
 
     fun equal(){
-
-        var obj = EvaluateString
-        var text = editText.text.toString()
-        Log.i("textValue",text)
-        var finalNumber = obj.evaluate(text).toString()
-        Log.i("finalNumber", finalNumber)
-        editText.setText(finalNumber)
+        val obj = InfixEvaluation()
+        val text = editText.text.toString()
+        editText.text = obj.evaluate(text).toString()
     }
 
 
@@ -108,6 +102,5 @@ class MainActivity : AppCompatActivity() {
 
         editText.setText("")
     }
-
 
 }
