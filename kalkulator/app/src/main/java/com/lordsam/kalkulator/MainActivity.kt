@@ -26,10 +26,60 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    var buClick = ""
+    var isOpEnabled = true
+
+    fun clickOperator(view :View){
+
+        val ob = InfixEvaluation()
+        Log.i("opselect","clicked $isOpEnabled")
+        val opSelect = view as Button
+        if (isOpEnabled) {
+            when (opSelect.id) {
+                bumul.id -> {
+                    buClick += "*"
+                }
+                budiv.id -> {
+                    buClick += "/"
+                }
+                busub.id -> {
+                    buClick += "-"
+                }
+                buAdd.id -> {
+                    buClick += "+"
+                }
+            }
+            editText.text = buClick
+        }
+        else if (!isOpEnabled && (ob.isOperator(buClick[buClick.length - 1]))){
+
+            var buArr = buClick.toCharArray()
+            when (opSelect.id) {
+                bumul.id -> {
+                    buArr[buClick.length - 1] = '*'
+                }
+                budiv.id -> {
+                    buArr[buClick.length - 1] = '/'
+                }
+                busub.id -> {
+                    buArr[buClick.length - 1] = '-'
+                }
+                buAdd.id -> {
+                    buArr[buClick.length - 1] = '+'
+                }
+            }
+            for (i in buArr.indices)
+                buClick += buArr[i]
+            editText.text=buClick
+            }
+        isOpEnabled = false
+    }
+
     fun clickEvent(view : View){
 
+        buClick=editText.text.toString()
+
         val buSelect = view as Button
-        var buClick:String=editText.text.toString()
 
         when(buSelect.id){
             bu0.id->{
@@ -68,38 +118,27 @@ class MainActivity : AppCompatActivity() {
             buplusminus.id->{
                 buClick ="-"+buClick
             }
-            bumul.id -> {
-                buClick += "*"
-            }
-            budiv.id -> {
-                buClick += "/"
-            }
-            busub.id -> {
-                buClick += "-"
-            }
-            buAdd.id -> {
-                buClick += "+"
-            }
         }
-
-        editText.setText(buClick)
+        isOpEnabled = true
+        Log.i("openable", isOpEnabled.toString())
+        editText.text = buClick
     }
 
     fun equal(){
         val obj = InfixEvaluation()
         val text = editText.text.toString()
         editText.text = obj.evaluate(text).toString()
+        isOpEnabled = true
     }
 
 
     fun bupercent(){
         val number = editText.text.toString().toDouble()/100
-
+        isOpEnabled = true
         editText.setText(number.toString())
     }
 
     fun buclean (){
-
         editText.setText("")
     }
 

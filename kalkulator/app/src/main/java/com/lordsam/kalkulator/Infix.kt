@@ -84,6 +84,10 @@ class InfixEvaluation {
         return c == '+' || c == '-' || c == '/' || c == '*' || c == '^'
     }
 
+    fun isOperator(c: String): Boolean {
+        return c == "+" || c == "-" || c == "/" || c == "*" || c == "^"
+    }
+
     companion object {
         fun precedence(c: Char): Int {
             when (c) {
