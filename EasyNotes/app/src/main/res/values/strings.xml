@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Easy Notes</string>
+    <string name="title">Title</string>
+    <string name="add_note">Add Note</string>
+    <string name="details">Details</string>
+    <string name="todo">TODO</string>
+    <string name="search">Search</string>
+    <string name="item">Item</string>
 </resources>
