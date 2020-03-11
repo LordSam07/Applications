@@ -3,6 +3,9 @@ package com.lordsam.easynotes
 import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewGroup
+import android.view.Window
+import android.view.WindowManager
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_note.*
 import java.lang.Exception
@@ -10,9 +13,25 @@ import java.lang.Exception
 class NoteActivity : AppCompatActivity() {
 
     private var id = 0
+
+    override fun onStart() {
+        super.onStart()
+        window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note)
+        window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+
+        //title
+        try {
+            val bundle = intent.extras
+            val actionBarTitle = bundle!!.getString("actionBar")
+            if (actionBarTitle == "edit")
+                title = "Edit Note"
+        }catch (ex :Exception){}
+
 
         buttonAdd.setOnClickListener { buAdd() }
 
@@ -23,8 +42,7 @@ class NoteActivity : AppCompatActivity() {
                 editText2.setText(bundle.getString("Title"))
                 editText.setText(bundle.getString("Info"))
             }
-        } catch (ex: Exception) {
-        }
+        } catch (ex: Exception) {}
     }
 
     fun buAdd() {

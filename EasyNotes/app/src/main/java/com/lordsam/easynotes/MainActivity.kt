@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun loadQuery(title: String) {
-
         val dbManager = DatabaseManager(this)
         val selectionArgs = arrayOf(title)
         val projections = arrayOf("ID", "Title", "Info")
@@ -124,6 +123,7 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("ID", note.noteId)
         intent.putExtra("Title", note.noteTitle)
         intent.putExtra("Info", note.noteInfo)
+        intent.putExtra("actionBar","edit")
         startActivity(intent)
     }
 }

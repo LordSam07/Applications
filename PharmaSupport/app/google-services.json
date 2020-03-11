@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "522772920740",
+    "firebase_url": "https://pharma-support-a46cc.firebaseio.com",
+    "project_id": "pharma-support-a46cc",
+    "storage_bucket": "pharma-support-a46cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:522772920740:android:73487509fe4a5ff9ebe931",
+        "android_client_info": {
+          "package_name": "com.lordsam.pharmasupport"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "522772920740-vefr9jc1gtpl7jpu0vqur477d15hkopt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lordsam.pharmasupport",
+            "certificate_hash": "78b1a6d7700597922ab18577342f92b39df82a32"
+          }
+        },
+        {
+          "client_id": "522772920740-5ejcnk2rnad19fruo838eictpjb8ma12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAivwspZunE265YxfQ_EDJi10NeXOq-huY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "522772920740-5ejcnk2rnad19fruo838eictpjb8ma12.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
