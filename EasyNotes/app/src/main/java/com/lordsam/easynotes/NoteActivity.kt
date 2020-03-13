@@ -1,14 +1,11 @@
 package com.lordsam.easynotes
 
 import android.content.ContentValues
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
-import android.view.Window
-import android.view.WindowManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_note.*
-import java.lang.Exception
 
 class NoteActivity : AppCompatActivity() {
 

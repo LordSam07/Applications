@@ -50,7 +50,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/todo"
-                app:srcCompat="@drawable/baseline_delete_black_18dp" />
+                app:srcCompat="@drawable/baseline_delete_black_18dp"
+                android:layout_marginStart="5dp" />
 
             <ImageView
                 android:id="@+id/imageView2"

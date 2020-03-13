@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".NotificationActivity">
+    android:orientation="horizontal"
+    tools:context=".NotificationActivity"
+    tools:ignore="UseCompoundDrawables">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:id="@+id/textViewNotify"
-        android:layout_height="match_parent"
-        android:text="Notification"
-        android:gravity="right"
-        android:padding="20dp"/>
+
+        <ImageView
+            android:id="@+id/imageViewAppIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="5dp"
+            android:src="@mipmap/ic_app_icon_round"
+            android:layout_margin="5dp"
+            android:contentDescription="@string/todo" />
+
+        <TextView
+            android:id="@+id/textViewNotify"
+            android:layout_width="match_parent"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textSize="16sp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/notification"
+            android:paddingStart="5dp" />
 
 </LinearLayout>

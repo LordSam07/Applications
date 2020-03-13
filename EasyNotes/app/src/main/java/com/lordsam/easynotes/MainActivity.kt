@@ -17,16 +17,16 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_ticket.view.*
 
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
-    lateinit var notificationManager :NotificationManager
-    lateinit var notificationChannel: NotificationChannel
-    lateinit var builder :Notification.Builder
+    private lateinit var notificationManager :NotificationManager
+    private lateinit var notificationChannel: NotificationChannel
+    private lateinit var builder :Notification.Builder
     private val channelID = "com.lordsam.easynotes"
     private val des = "Test Notification"
 
@@ -115,8 +115,8 @@ class MainActivity : AppCompatActivity() {
                 gotUpdate(note)
             }
             myView.imageViewPin.setOnClickListener {
-                Toast.makeText(applicationContext, "Clicked pin", Toast.LENGTH_SHORT).show()
-                addNotification()
+                val title = myView.textView.text.toString()
+                addNotification(title)
             }
             return myView
         }
@@ -145,13 +145,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun addNotification() {
-        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    private fun addNotification(title :String) {
 
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val intent =  Intent(this, NotificationActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         val contentView = RemoteViews(packageName, R.layout.activity_notification)
-        contentView.setTextViewText(R.id.textViewNotify, "Code Sam")
+        contentView.setTextViewText(R.id.textViewNotify, title)
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             notificationChannel =
                 NotificationChannel(channelID, des, NotificationManager.IMPORTANCE_HIGH)
@@ -162,13 +164,13 @@ class MainActivity : AppCompatActivity() {
 
             builder = Notification.Builder(this, channelID)
                 .setContent(contentView)
-                .setSmallIcon(R.drawable.app_icon)
+                .setSmallIcon(R.mipmap.ic_app_icon)
                 .setContentIntent(pendingIntent)
         }else{
 
             builder = Notification.Builder(this)
                 .setContent(contentView)
-                .setSmallIcon(R.drawable.app_icon)
+                .setSmallIcon(R.mipmap.ic_app_icon)
                 .setContentIntent(pendingIntent)
         }
         notificationManager.notify(1234, builder.build())
