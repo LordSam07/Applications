@@ -1,22 +1,34 @@
 package com.lordsam.easynotes
 
 import android.annotation.SuppressLint
-import android.app.SearchManager
+import android.app.*
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.RemoteViews
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_ticket.view.*
 
+
 class MainActivity : AppCompatActivity() {
+
+    lateinit var notificationManager :NotificationManager
+    lateinit var notificationChannel: NotificationChannel
+    lateinit var builder :Notification.Builder
+    private val channelID = "com.lordsam.easynotes"
+    private val des = "Test Notification"
 
     private var listNote = ArrayList<Note>()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,6 +99,7 @@ class MainActivity : AppCompatActivity() {
         BaseAdapter() {
 
         @SuppressLint("ViewHolder", "InflateParams")
+        @RequiresApi(Build.VERSION_CODES.O)
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             val myView = layoutInflater.inflate(R.layout.activity_ticket, null)
             val note = listNote[position]
@@ -100,6 +113,10 @@ class MainActivity : AppCompatActivity() {
             }
             myView.imageView2.setOnClickListener {
                 gotUpdate(note)
+            }
+            myView.imageViewPin.setOnClickListener {
+                Toast.makeText(applicationContext, "Clicked pin", Toast.LENGTH_SHORT).show()
+                addNotification()
             }
             return myView
         }
@@ -125,5 +142,36 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("Info", note.noteInfo)
         intent.putExtra("actionBar","edit")
         startActivity(intent)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun addNotification() {
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        val intent =  Intent(this, NotificationActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val contentView = RemoteViews(packageName, R.layout.activity_notification)
+        contentView.setTextViewText(R.id.textViewNotify, "Code Sam")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            notificationChannel =
+                NotificationChannel(channelID, des, NotificationManager.IMPORTANCE_HIGH)
+            notificationChannel.enableLights(true)
+            notificationChannel.lightColor = Color.GREEN
+            notificationChannel.enableVibration(false)
+            notificationManager.createNotificationChannel(notificationChannel)
+
+            builder = Notification.Builder(this, channelID)
+                .setContent(contentView)
+                .setSmallIcon(R.drawable.app_icon)
+                .setContentIntent(pendingIntent)
+        }else{
+
+            builder = Notification.Builder(this)
+                .setContent(contentView)
+                .setSmallIcon(R.drawable.app_icon)
+                .setContentIntent(pendingIntent)
+        }
+        notificationManager.notify(1234, builder.build())
+
     }
 }

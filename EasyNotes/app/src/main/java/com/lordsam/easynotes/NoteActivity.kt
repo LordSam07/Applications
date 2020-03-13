@@ -45,7 +45,7 @@ class NoteActivity : AppCompatActivity() {
         } catch (ex: Exception) {}
     }
 
-    fun buAdd() {
+    private fun buAdd() {
         val dbManager = DatabaseManager(this)
         val values = ContentValues()
 
