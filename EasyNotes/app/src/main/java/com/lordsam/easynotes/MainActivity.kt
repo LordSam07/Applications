@@ -148,10 +148,14 @@ class MainActivity : AppCompatActivity() {
     private fun addNotification(title :String) {
 
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val intent =  Intent(this, NotificationActivity::class.java)
+        val intent =  Intent(this, MainActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         val contentView = RemoteViews(packageName, R.layout.activity_notification)
         contentView.setTextViewText(R.id.textViewNotify, title)
+
+//        val mainIntent = Intent(this, MainActivity::class.java)
+//        mainIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+//        val mainPendingIntent = PendingIntent.getActivity(this, 0 ,mainIntent, PendingIntent.FLAG_ONE_SHOT)
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {

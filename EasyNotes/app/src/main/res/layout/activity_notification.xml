@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     tools:context=".NotificationActivity"
+    android:id="@+id/linearLayout"
     tools:ignore="UseCompoundDrawables">
 
 
