@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "90379692961",
+    "firebase_url": "https://bakaya-app.firebaseio.com",
+    "project_id": "bakaya-app",
+    "storage_bucket": "bakaya-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90379692961:android:96b1224fe20f704ecb79e0",
+        "android_client_info": {
+          "package_name": "com.lordsam.bakayaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90379692961-nedbed0pt44adnibm0kmgtvl498tr88p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lordsam.bakayaapp",
+            "certificate_hash": "78b1a6d7700597922ab18577342f92b39df82a32"
+          }
+        },
+        {
+          "client_id": "90379692961-erkq8vjm8h6h91a1necct25clbjcj3bm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkHEWfBH0u9TFT5YqMyrJR_gFagMwxYtk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90379692961-erkq8vjm8h6h91a1necct25clbjcj3bm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

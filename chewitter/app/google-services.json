@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "512199366869",
+    "firebase_url": "https://chewitter-3f24c.firebaseio.com",
+    "project_id": "chewitter-3f24c",
+    "storage_bucket": "chewitter-3f24c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512199366869:android:95470c4e6688cdbad6ea5c",
+        "android_client_info": {
+          "package_name": "com.lordsam.chewitter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512199366869-9oofg549h19ahufukb3sdcbdfa29j165.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lordsam.chewitter",
+            "certificate_hash": "78b1a6d7700597922ab18577342f92b39df82a32"
+          }
+        },
+        {
+          "client_id": "512199366869-h044qtgo1ovbcntaf4ickfcvcbr8bnn6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWegQ5yQT5TtGYoP9ZHF9bMk1Tr-ZJQrQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512199366869-h044qtgo1ovbcntaf4ickfcvcbr8bnn6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

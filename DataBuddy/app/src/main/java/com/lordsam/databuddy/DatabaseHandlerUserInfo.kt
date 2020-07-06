@@ -42,4 +42,56 @@ class DatabaseHandlerUserInfo(var context: Context) : SQLiteOpenHelper(context, 
         }
     }
 
+    fun readData() :MutableList<User>{
+
+        var list :MutableList<User> = ArrayList()
+        var db = this.readableDatabase
+        val query = "SELECT * FROM $DATABASE_TABLE"
+        val result =  db.rawQuery(query, null)
+
+        if (result.moveToFirst()){
+            do {
+                val user = User()
+                user.id = result.getString(result.getColumnIndex(COL_ID)).toInt()
+                user.userName = result.getString(result.getColumnIndex(COL_USER_NAME))
+                user.password = result.getString(result.getColumnIndex(COL_PASSWORD))
+                list.add(user)
+            }while (result.moveToNext())
+        }
+
+        result.close()
+        db.close()
+        return list
+    }
+
+    fun updateData() {
+
+        var db = this.writableDatabase
+        val query = "SELECT * FROM $DATABASE_TABLE"
+        val result =  db.rawQuery(query, null)
+
+        if (result.moveToFirst()){
+            do {
+                val cv = ContentValues()
+                cv.put(COL_PASSWORD, /*result.getInt(result.getColumnIndex(COL_PASSWORD))*/ "Updated")
+                db.update(DATABASE_TABLE, cv, "$COL_ID =? AND $COL_USER_NAME =?",
+                    arrayOf(result.getString(result.getColumnIndex(COL_ID)),
+                    result.getString(result.getColumnIndex(COL_USER_NAME))))
+
+            }while (result.moveToNext())
+        }
+
+        result.close()
+        db.close()
+    }
+
+    fun deleteData(){
+        val db = this.writableDatabase
+        db.delete(DATABASE_TABLE, null, null)//to delete all values
+        //db.delete(DATABASE_TABLE, "$COL_ID=?", arrayOf(1.toString()))
+        db.close()
+    }
+
+
+
 }
